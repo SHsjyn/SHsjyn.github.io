@@ -1,99 +1,492 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://a1.boltp.com/2025/03/29/67e8109c65c40.ico">
-    <link rel="preload" href="https://a1.boltp.com/2025/03/29/67e8109c7ffef.png" as="image">
-    <link rel="preload" href="https://a1.boltp.com/2025/03/29/67e8109d1a446.png" as="image">
-    <title>聯係我們 - 飛書商務合作</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="上海世界逸南科技有限公司（World Yinan）官方门户——科技推广与应用服务，合规经营，诚信致远。">
+<title>世界逸南 · 上海世界逸南科技有限公司</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('yinan-theme');
+      if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --paper: #FAF6F0;
+    --paper-deep: #F2EBE1;
+    --ink: #221E19;
+    --ink-soft: #5F5950;
+    --ink-faint: #8C857A;
+    --cinnabar: #A62B1B;
+    --cinnabar-deep: #8C2214;
+    --line: #E6DED1;
+    --white: #FFFFFF;
+    --radius: 16px;
+  }
 
-    <!-- 优先加载书法体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  [data-theme="dark"] {
+    --paper: #16130C;
+    --paper-deep: #201B12;
+    --ink: #EEE5D6;
+    --ink-soft: #B8AE9F;
+    --ink-faint: #887E6E;
+    --cinnabar: #D94A33;
+    --cinnabar-deep: #B93A26;
+    --line: #393229;
+    --white: #1D1810;
+  }
+  [data-theme="dark"] .nav { background: rgba(22,19,12,.92); }
+  [data-theme="dark"] .hero::after {
+    background: linear-gradient(100deg, rgba(22,19,12,.97) 0%, rgba(22,19,12,.9) 45%, rgba(22,19,12,.42) 100%);
+  }
+  [data-theme="dark"] .hero-bg { opacity: .45; }
+  [data-theme="dark"] .hero-kicker { background: rgba(29,24,16,.65); border-color: rgba(217,74,51,.45); }
+  [data-theme="dark"] .btn-ghost { background: rgba(29,24,16,.55); }
+  [data-theme="dark"] .brand img,
+  [data-theme="dark"] .footer-brand img { background: #F5EFE4; }
+  [data-theme="dark"] .channel-icon { background: var(--paper-deep); }
+  [data-theme="dark"] footer { background: #0E0B06; }
+  [data-theme="dark"] .value-card:hover { box-shadow: 0 18px 36px -24px rgba(0,0,0,.6); }
 
-    <!-- 引入独立的 CSS 文件 -->
-    <link rel="stylesheet" href="styles.css">
+  /* ===== 主题切换按钮 ===== */
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .theme-toggle {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid var(--line); background: var(--paper);
+    color: var(--ink); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .theme-toggle:hover { border-color: var(--cinnabar); color: var(--cinnabar); }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const body = document.body;
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .serif { font-family: "Noto Serif SC", "Songti SC", "SimSun", serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-            function applyTheme() {
-                const isDark = mediaQuery.matches;
-                body.classList.toggle('dark-mode', isDark);
-                body.classList.toggle('light-mode', !isDark);
-            }
+  /* ===== 导航 ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,246,240,.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1120px; margin: 0 auto; padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { width: 52px; height: 52px; border-radius: 10px; }
+  .brand-name { font-weight: 700; font-size: 15px; line-height: 1.4; }
+  .brand-name small { display: block; font-size: 11px; font-weight: 500; color: var(--ink-faint); letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--cinnabar); }
 
-            // 初始应用系统主题
-            applyTheme();
+  /* ===== Hero ===== */
+  .hero { position: relative; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+    opacity: .9;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(250,246,240,.96) 0%, rgba(250,246,240,.88) 42%, rgba(250,246,240,.30) 100%);
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1120px; margin: 0 auto;
+    padding: 130px 24px 150px;
+  }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 700; color: var(--cinnabar);
+    letter-spacing: 4px;
+    border: 1px solid rgba(166,43,27,.35);
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.6);
+  }
+  .hero h1 {
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: 64px; font-weight: 900; letter-spacing: 6px;
+    margin-top: 26px; line-height: 1.15;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--cinnabar);
+  }
+  .hero-en { margin-top: 10px; font-size: 15px; letter-spacing: 6px; color: var(--ink-soft); white-space: nowrap; }
+  .hero-slogan {
+    margin-top: 30px; max-width: 560px;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: 17px; font-weight: 600; color: var(--ink-soft);
+    line-height: 2.1;
+  }
+  .hero-slogan::before {
+    content: ""; display: block; width: 44px; height: 3px;
+    background: var(--cinnabar); border-radius: 2px; margin-bottom: 16px;
+  }
+  .hero-cta { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+  }
+  .btn-solid { background: var(--cinnabar); color: #fff; }
+  .btn-solid:hover { background: var(--cinnabar-deep); }
+  .btn-ghost { border: 1px solid var(--ink); color: var(--ink); background: rgba(255,255,255,.5); }
+  .btn-ghost:hover { border-color: var(--cinnabar); color: var(--cinnabar); }
 
-            // 监听系统主题变化（兼容旧 API）
-            if (typeof mediaQuery.addEventListener === 'function') {
-                mediaQuery.addEventListener('change', applyTheme);
-            } else if (typeof mediaQuery.addListener === 'function') {
-                mediaQuery.addListener(applyTheme);
-            }
-        });
-    </script>
+  /* ===== Section ===== */
+  section { padding: 96px 0; }
+  .sec-head { max-width: 1120px; margin: 0 auto 48px; padding: 0 24px; }
+  .sec-kicker { font-size: 13px; font-weight: 700; color: var(--cinnabar); letter-spacing: 4px; }
+  .sec-title {
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: 36px; font-weight: 900; letter-spacing: 3px;
+    margin-top: 10px;
+  }
+  .sec-sub { margin-top: 14px; color: var(--ink-soft); font-size: 15px; max-width: 640px; }
+
+  /* ===== 关于 ===== */
+  #about { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid {
+    max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+  }
+  .about-fig { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+  .about-fig img { width: 100%; height: 100%; object-fit: cover; }
+  .about-text p { color: var(--ink-soft); font-size: 15px; margin-top: 16px; }
+  .about-text p:first-of-type { margin-top: 0; }
+  .about-text .lead { color: var(--ink); font-size: 17px; font-weight: 500; }
+
+  /* ===== 理念 ===== */
+  .values-grid {
+    max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .value-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 32px 26px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .value-card:hover { transform: translateY(-3px); box-shadow: 0 18px 36px -24px rgba(34,30,25,.2); }
+  .seal {
+    width: 46px; height: 46px; border-radius: 9px;
+    background: var(--cinnabar); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Noto Serif SC", serif; font-weight: 700; font-size: 15px;
+    margin-bottom: 18px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .value-card h3 { font-family: "Noto Serif SC", serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+  .value-card p { margin-top: 10px; font-size: 14px; color: var(--ink-soft); }
+
+  /* ===== 业务 ===== */
+  #services { background: var(--paper-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .svc-grid {
+    max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .svc-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 34px 28px;
+  }
+  .svc-icon {
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 1px solid rgba(166,43,27,.3); color: var(--cinnabar);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .svc-card h3 { font-family: "Noto Serif SC", serif; font-size: 19px; font-weight: 700; letter-spacing: 1px; }
+  .svc-card p { margin-top: 10px; font-size: 14px; color: var(--ink-soft); }
+  .svc-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); }
+
+  /* ===== 联系 ===== */
+  .contact-grid {
+    max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: 1fr 320px; gap: 26px; align-items: start;
+  }
+  .channel-list { display: grid; gap: 16px; }
+  .channel {
+    display: flex; align-items: center; gap: 18px;
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 24px;
+    transition: border-color .2s ease;
+  }
+  .channel:hover { border-color: var(--cinnabar); }
+  .channel-icon {
+    flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px;
+    background: var(--paper); color: var(--cinnabar);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .channel h4 { font-size: 15px; font-weight: 700; }
+  .channel p { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .channel a { font-size: 14px; font-weight: 500; color: var(--ink); word-break: break-all; }
+  .channel:hover a { color: var(--cinnabar); }
+  .qr-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px; text-align: center;
+  }
+  .qr-card img { width: 100%; max-width: 240px; margin: 0 auto; border-radius: 10px; }
+  .qr-card h4 { font-size: 15px; font-weight: 700; margin-top: 14px; }
+  .qr-card p { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+
+  /* ===== 页脚 ===== */
+  footer { background: #221E19; color: #CFC8BD; }
+  .footer-inner { max-width: 1120px; margin: 0 auto; padding: 56px 24px 40px; }
+  .footer-top {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px;
+    padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  .footer-brand img { width: 64px; height: 64px; border-radius: 12px; background: var(--paper); }
+  .footer-brand h4 { color: #fff; font-family: "Noto Serif SC", serif; font-size: 19px; letter-spacing: 2px; margin-top: 14px; }
+  .footer-brand p { margin-top: 10px; font-size: 13px; line-height: 2; color: #A9A197; }
+  .footer-col h5 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: grid; gap: 10px; font-size: 13px; }
+  .footer-col li a:hover { color: #fff; }
+  .footer-bottom {
+    padding-top: 26px; display: flex; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: #8F887C;
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 960px) {
+    .hero h1 { font-size: 46px; letter-spacing: 4px; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .values-grid, .svc-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .qr-card img { max-width: 220px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-inner { padding: 90px 24px 110px; }
+    .hero h1 { font-size: 36px; }
+    .hero-en { font-size: 13px; letter-spacing: 1px; }
+    .sec-title { font-size: 28px; }
+    section { padding: 72px 0; }
+  }
+</style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="https://a1.boltp.com/2025/03/29/67e8109c7ffef.png" alt="logo.png" title="logo.png" class="logo" loading="lazy">
-            <h1>立即添加商务飞书</h1>
-            <p>譯己，譯心，譯深秋深淺，譯人生淅瀝！</p>
-        </div>
-        <div class="content">
-            <div class="card">
-                <h2></h2>
-                <a href="https://a1.boltp.com/2025/03/29/67e8109d1a446.png">
-                    <img src="https://a1.boltp.com/2025/03/29/67e8109d1a446.png" alt="erweima.png" title="erweima.png" class="qrcode" loading="lazy">
-                </a>
-                <p>或直接点击下方按钮添加</p>
-                <a href="https://www.feishu.cn/invitation/page/add_contact/?token=864v1cc0-b526-4f99-83fa-515cc9dcb467&unique_id=dFSNyxpF-ylx7xIllOqVKA=="
-                    class="cta-button" target="_blank">立即添加</a>
-            </div>
-            <div class="card">
-                <h2>添加指引</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        打开飞书 APP
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        点击"右上角加号" → 扫一扫
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        扫描二维码添加好友
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-info">
-            <p>©上海世界逸南科技有限公司</p>
-            <div class="social-title">社交媒体</div>
-            <div class="social-links-inline">
-                <a href="https://support.qq.com/embed/phone/678777" target="_blank">在线反馈</a>
-                <a href="https://m.weibo.cn/u/7621918292?jumpfrom=weibocom" target="_blank">微博</a>
-                <a href="https://v.douyin.com/iFvkP3W1/" target="_blank">抖音</a>
-                <!-- 修复了断行导致的错误属性 -->
-                <a href="https://v.douyin.com/DEam0QmZGys/" target="_blank">法务部抖音</a>
-            </div>
-            <p>官方邮箱 GF@shsjyn.cn</p>
-            <p>法务部门 LD@shsjyn.cn</p>
-            <p>人力资源部 HRBP@shsjyn.cn</p>
-        </div>
-        <div class="special-thanks">
-            <h2>特别鸣谢</h2>
-            <p>山河尽赠佳人：  <a href="https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2595516270&app_version=dev.250313">小米社区</a>  <a href="https://github.com/naiheSH">Github</a></p>
-            <p>D S J I E 工作室</p>
-        </div>
-    </div>
-</body>
 
+<!-- ===== 导航 ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <img src="https://aka.doubaocdn.com/s/iUPkpHvDY1" alt="世界逸南 Logo">
+      <span class="brand-name">上海世界逸南科技有限公司<small>WORLD YINAN</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">关于我们</a>
+        <a href="#values">品牌理念</a>
+        <a href="#services">业务领域</a>
+        <a href="#contact">联系方式</a>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换浅色/深色模式">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"></path></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero" id="top">
+  <img class="hero-bg" src="https://aka.doubaocdn.com/s/mTn8OlMGV0" alt="水墨科技主视觉">
+  <div class="hero-inner">
+    <span class="hero-kicker">上海世界逸南科技有限公司</span>
+    <h1>世界<em>逸南</em></h1>
+    <div class="hero-en">WORLD YINAN · 与科技同行，与文化共生</div>
+    <p class="hero-slogan">譯己，譯心，譯深秋深淺，譯人生淅瀝。</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#contact">联系我们</a>
+      <a class="btn btn-ghost" href="#about">了解我们</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 关于我们 ===== -->
+<section id="about">
+  <div class="sec-head">
+    <div class="sec-kicker">ABOUT US</div>
+    <h2 class="sec-title">关于我们</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-fig">
+      <img src="https://aka.doubaocdn.com/s/hRtuBThUR4" alt="世界逸南公益海报——停止虐待动物，尊重生命">
+    </div>
+    <div class="about-text">
+      <p>上海世界逸南科技有限公司（World Yinan）是一家依法登记、规范经营的科技型企业。</p>
+      <p>公司立足「科技推广和应用服务业」，以科技推广、技术咨询与品牌数字化运营为核心方向，秉持诚信为本、合规经营的长期主义理念，致力于在技术创新与产业应用之间架起桥梁。</p>
+      <p>「世界逸南」取意于逸然致远、深耕笃行：我们相信，真正的价值来自对专业的敬畏、对客户的真诚，以及对每一个细节的用心。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 品牌理念 ===== -->
+<section id="values">
+  <div class="sec-head">
+    <div class="sec-kicker">PHILOSOPHY</div>
+    <h2 class="sec-title">品牌理念</h2>
+    <p class="sec-sub">从品牌名出发，我们把经营态度凝练为三枚印信——诚信、专注、致远。</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="seal">诚</div>
+      <h3>诚信为本</h3>
+      <p>依法登记、如实经营，以透明与守信对待每一位合作伙伴，让信任成为合作的基础。</p>
+    </div>
+    <div class="value-card">
+      <div class="seal">专</div>
+      <h3>专业专注</h3>
+      <p>聚焦科技推广与应用服务，以专业的判断与踏实的执行，交付经得起推敲的结果。</p>
+    </div>
+    <div class="value-card">
+      <div class="seal">远</div>
+      <h3>逸然致远</h3>
+      <p>不追逐短期喧嚣，以长期主义的姿态稳健前行，与合作伙伴一同行稳致远。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 业务领域 ===== -->
+<section id="services">
+  <div class="sec-head">
+    <div class="sec-kicker">BUSINESS</div>
+    <h2 class="sec-title">业务领域</h2>
+    <p class="sec-sub">立足科技推广和应用服务业，围绕「技术 + 品牌 + 服务」构建三大业务方向。</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6 4 4 6-8"></path><path d="M14 7h6v6"></path></svg>
+      </div>
+      <h3>科技推广与转化</h3>
+      <p>面向创新成果与前沿技术，提供推广应用与市场化衔接服务，让技术价值落地为实际生产力。</p>
+      <div class="svc-note">服务方向 · 欢迎洽谈</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1010 10"></path><path d="M12 6a6 6 0 106 6"></path><circle cx="12" cy="12" r="2"></circle></svg>
+      </div>
+      <h3>技术咨询与服务</h3>
+      <p>为企业与合作伙伴提供专业化、体系化的技术咨询服务，覆盖从方案评估到落地执行的关键环节。</p>
+      <div class="svc-note">服务方向 · 欢迎洽谈</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg>
+      </div>
+      <h3>品牌数字化运营</h3>
+      <p>融合文化内涵与数字工具，为企业品牌提供线上运营、内容建设与全渠道触达服务。</p>
+      <div class="svc-note">服务方向 · 欢迎洽谈</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 联系方式 ===== -->
+<section id="contact">
+  <div class="sec-head">
+    <div class="sec-kicker">CONTACT</div>
+    <h2 class="sec-title">联系方式</h2>
+    <p class="sec-sub">业务合作、法律事务与人力资源等事宜，欢迎通过对应渠道与我们联系。</p>
+  </div>
+  <div class="contact-grid">
+    <div class="channel-list">
+      <div class="channel">
+        <span class="channel-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+        </span>
+        <div>
+          <h4>官方邮箱</h4>
+          <p>商务合作、业务咨询与媒体联络</p>
+          <a href="mailto:GF@shsjyn.cn">GF@shsjyn.cn</a>
+        </div>
+      </div>
+      <div class="channel">
+        <span class="channel-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </span>
+        <div>
+          <h4>法务部门</h4>
+          <p>合规咨询、法律事务与合作审核</p>
+          <a href="mailto:LD@shsjyn.cn">LD@shsjyn.cn</a>
+        </div>
+      </div>
+      <div class="channel">
+        <span class="channel-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"></path></svg>
+        </span>
+        <div>
+          <h4>人力资源部</h4>
+          <p>招聘合作、人事相关事宜</p>
+          <a href="mailto:HRBP@shsjyn.cn">HRBP@shsjyn.cn</a>
+        </div>
+      </div>
+    </div>
+    <div class="qr-card">
+      <img src="https://aka.doubaocdn.com/s/b0JVVhoFie" alt="飞书商务合作二维码">
+      <h4>飞书商务合作</h4>
+      <p>扫描二维码，添加商务联系人<br>（世界逸南 · CURTAIN.落幕）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://aka.doubaocdn.com/s/iUPkpHvDY1" alt="世界逸南 Logo">
+        <h4>世界逸南</h4>
+        <p>上海世界逸南科技有限公司<br>World Yinan · 与科技同行，与文化共生</p>
+      </div>
+      <div class="footer-col">
+        <h5>快速导航</h5>
+        <ul>
+          <li><a href="#about">关于我们</a></li>
+          <li><a href="#values">品牌理念</a></li>
+          <li><a href="#services">业务领域</a></li>
+          <li><a href="#contact">联系方式</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024-2026 上海世界逸南科技有限公司 版权所有</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('theme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var root = document.documentElement;
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('yinan-theme', next); } catch (e) {}
+    });
+  }
+</script>
+</body>
 </html>
