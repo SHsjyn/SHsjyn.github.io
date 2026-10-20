@@ -411,10 +411,178 @@ body[data-theme="dark"] .home-subline {
   .home-copy .brand-slogan { font-size: 14px !important; }
 }
 
+
+/* Front-end font switcher; font resources are fetched only when a visitor selects a font. */
+.font-picker{display:flex;align-items:center;gap:7px;position:relative;flex:0 0 auto}
+.font-label{font-size:11px;letter-spacing:.04em;color:inherit;white-space:nowrap}
+.font-select{font-family:var(--sans);font-size:12px;color:inherit;background:rgba(255,255,255,.36);border:1px solid rgba(130,130,130,.42);border-radius:7px;padding:7px 26px 7px 9px;min-width:125px;max-width:150px;min-height:34px;outline-offset:3px;cursor:pointer}
+.font-select option{background:#fffdfa;color:#1c2935}
+body[data-theme="dark"] .font-select{background:rgba(255,255,255,.06);border-color:rgba(234,216,173,.4);color:#eee5d3}
+body[data-theme="dark"] .font-select option{background:#101e2e;color:#f5f2eb}
+.font-help{position:absolute;left:0;top:100%;margin-top:5px;font-size:9px;line-height:1.5;color:var(--muted);width:245px;display:none;z-index:12}
+.font-picker:focus-within .font-help{display:block}
+body[data-font="lanzhang"]{--sans:"兰掌","兰掌体","STKaiti","KaiTi","Kaiti SC","楷体", "Noto Serif SC",serif;--serif:"兰掌","兰掌体","STKaiti","KaiTi","Kaiti SC","楷体", "Noto Serif SC",serif}
+body[data-font="misans"]{--sans:"MiSans VF","MiSans","MiSans-Regular",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--serif:"MiSans VF","MiSans","MiSans-Regular",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+body[data-font="misans-global"]{--sans:"MiSans Global","MiSans",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--serif:"MiSans Global","MiSans",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+body[data-font="lanzhang"] .home-copy h1{letter-spacing:.1em}
+.font-legal-note{font-size:10px;color:var(--muted);line-height:1.5;max-width:360px}
+body[data-theme="dark"] .font-legal-note{color:#aab4bf}
+@media(max-width:900px){.links{gap:12px}.font-select{min-width:118px}}
+@media(max-width:700px){.font-picker{padding:11px 0;display:grid;grid-template-columns:34px 1fr;gap:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)}.font-label{font-size:12px}.font-select{width:100%;max-width:none;min-height:42px}.font-help{position:static;display:block;grid-column:1/-1;width:auto;margin:0;font-size:10px;color:#7e8a96}body[data-theme="light"] .font-help{color:#687480}.font-legal-note{display:block;margin-top:8px;max-width:none}}
+
+
+
+/* V13 FIX: complete dark-theme adaptation across the entire website.
+   Previously, several content sections only had explicit light-theme rules. */
+body[data-theme="dark"] {
+  --night: #080f18;
+  --navy: #101d2b;
+  --navy2: #17283a;
+  --ivory: #101a26;
+  --paper: #0b1420;
+  --text: #e8edf2;
+  --muted: #aeb9c4;
+  --line: rgba(234,216,173,.20);
+  background: #0b1420 !important;
+  color: #e8edf2 !important;
+  color-scheme: dark;
+}
+body[data-theme="light"] { color-scheme: light; }
+body[data-theme="dark"] main { background: #0b1420; color: #e8edf2; }
+body[data-theme="dark"] .section-head h2,
+body[data-theme="dark"] .section-head .kicker { color: #f0e6d2; }
+body[data-theme="dark"] .section-head p { color: #aeb9c4; }
+
+/* About section */
+body[data-theme="dark"] .about {
+  background: #111c28 !important;
+  color: #e8edf2;
+}
+body[data-theme="dark"] .about-mark {
+  background: linear-gradient(145deg,#1a2b3d,#101a26) !important;
+  border: 1px solid rgba(234,216,173,.18);
+  color: #f3f5f7;
+}
+body[data-theme="dark"] .about-mark .small { color: #ead8ad; }
+body[data-theme="dark"] .about-mark .mark-foot { color: #b0bcc6; }
+body[data-theme="dark"] .about-copy h3 { color: #f0f3f5 !important; }
+body[data-theme="dark"] .about-copy p { color: #bec8d0 !important; }
+body[data-theme="dark"] .text-link { color: #f0d49a !important; border-bottom-color: rgba(234,216,173,.52); }
+
+/* Business / services cards */
+body[data-theme="dark"] .services {
+  background: #0c1621 !important;
+  color: #e8edf2;
+}
+body[data-theme="dark"] .service-card {
+  background: linear-gradient(150deg,#172536,#111d2a) !important;
+  border-color: rgba(234,216,173,.20) !important;
+  color: #e8edf2;
+  box-shadow: none;
+}
+body[data-theme="dark"] .service-card:hover {
+  background: linear-gradient(150deg,#1b2b3e,#142231) !important;
+  border-color: rgba(234,216,173,.55) !important;
+  box-shadow: 0 16px 36px rgba(0,0,0,.22);
+}
+body[data-theme="dark"] .service-card h3 { color: #f3f4f5 !important; }
+body[data-theme="dark"] .service-card p { color: #b7c2cb !important; }
+body[data-theme="dark"] .service-no { color: #e0c58d !important; }
+body[data-theme="dark"] .service-icon { color: #e8d4a7 !important; border-color: rgba(234,216,173,.46) !important; }
+body[data-theme="dark"] .service-card a { color: #e8d4a7 !important; }
+
+/* Brand values: explicitly preserve the premium navy treatment */
+body[data-theme="dark"] .values {
+  background: linear-gradient(120deg,#0c1723,#142638) !important;
+  color: #f1f3f5 !important;
+}
+body[data-theme="dark"] .values .section-head p { color: #b6c1ca !important; }
+body[data-theme="dark"] .value .cn { color: #f0d9a7 !important; }
+body[data-theme="dark"] .value .en { color: #a6b2bc !important; }
+body[data-theme="dark"] .value p { color: #c4cdd4 !important; }
+body[data-theme="dark"] .value { border-top-color: rgba(234,216,173,.42); }
+
+/* Contact & cooperation */
+body[data-theme="dark"] .cooperation {
+  background: #111c28 !important;
+  color: #e9edf1;
+}
+body[data-theme="dark"] .coop-panel {
+  background: linear-gradient(145deg,#0a1420,#111f2e) !important;
+  color: #edf1f4 !important;
+  border: 1px solid rgba(234,216,173,.18);
+}
+body[data-theme="dark"] .coop-panel h2,
+body[data-theme="dark"] .coop-panel h3 { color: #f4f1e9 !important; }
+body[data-theme="dark"] .coop-panel p { color: #bac5cd !important; }
+body[data-theme="dark"] .contact-row { border-color: rgba(234,216,173,.18) !important; }
+body[data-theme="dark"] .contact-row span { color: #b5c1ca !important; }
+body[data-theme="dark"] .contact-row strong { color: #f0dfba !important; }
+body[data-theme="dark"] .contact-row a { color: #f0d9a7 !important; }
+body[data-theme="dark"] .contact-premium-card {
+  background: linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.018)) !important;
+  color: #eaf0f4 !important;
+  border-color: rgba(234,216,173,.22) !important;
+}
+body[data-theme="dark"] .contact-premium-card:hover {
+  background: rgba(255,255,255,.075) !important;
+  border-color: rgba(234,216,173,.58) !important;
+}
+body[data-theme="dark"] .contact-premium-card .contact-index { color: #aebbc6 !important; }
+body[data-theme="dark"] .contact-premium-card .contact-title { color: #f4f1e9 !important; }
+body[data-theme="dark"] .contact-premium-card .contact-subtitle { color: #b4c0c9 !important; }
+body[data-theme="dark"] .contact-premium-card .contact-symbol,
+body[data-theme="dark"] .contact-premium-card .contact-link { color: #ecd5a1 !important; }
+body[data-theme="dark"] .contact-premium-card strong { color: #f0dfba !important; }
+body[data-theme="dark"] .contact-footnote { color: #adb9c3 !important; }
+body[data-theme="dark"] .feishu-qr-link { background: #fff !important; border-color: rgba(234,216,173,.18); }
+body[data-theme="dark"] .feishu-qr { background: #fff; }
+
+/* Footer and branding */
+body[data-theme="dark"] .footer {
+  background: #070e17 !important;
+  color: #b7c1ca !important;
+  border-top: 1px solid rgba(234,216,173,.16);
+}
+body[data-theme="dark"] .footer-brand strong { color: #f1f4f6 !important; }
+body[data-theme="dark"] .footer-brand small { color: #b2bdc7 !important; }
+body[data-theme="dark"] .footer-links,
+body[data-theme="dark"] .footer-links a { color: #c5ced5 !important; }
+body[data-theme="dark"] .footer-links a:hover { color: #f0d9a7 !important; }
+body[data-theme="dark"] .footer-bottom { color: #9ba8b3 !important; }
+body[data-theme="dark"] .font-legal-note { color: #aeb9c4 !important; }
+
+/* Header, controls, and floating actions */
+body[data-theme="dark"] .header { background: rgba(8,15,24,.97) !important; border-bottom-color: rgba(234,216,173,.16) !important; }
+body[data-theme="dark"] .brand-cn { color: #f0f2f4 !important; }
+body[data-theme="dark"] .brand-en { color: #aeb9c4 !important; }
+body[data-theme="dark"] .links { color: #e1e6ea !important; }
+body[data-theme="dark"] .links a:hover { color: #f0d9a7 !important; }
+body[data-theme="dark"] .menu { background: #111f2e !important; color: #f0e6d2 !important; border-color: rgba(234,216,173,.4) !important; }
+body[data-theme="dark"] .theme-toggle { background: rgba(255,255,255,.04) !important; color: #f0dfba !important; border-color: rgba(234,216,173,.45) !important; }
+body[data-theme="dark"] .font-select { background-color: #142333 !important; color: #eef2f5 !important; border-color: rgba(234,216,173,.42) !important; }
+body[data-theme="dark"] .font-select option { background: #101d2b !important; color: #eef2f5 !important; }
+body[data-theme="dark"] .font-help { color: #b6c1ca !important; }
+body[data-theme="dark"] .to-top { background: #17283a !important; color: #f0d9a7 !important; }
+
+/* Compact animal-welfare band */
+body[data-theme="dark"] .home-welfare { background: #101b27 !important; color: #eef2f4 !important; }
+body[data-theme="dark"] .home-welfare-lead h2,
+body[data-theme="dark"] .home-welfare-item strong { color: #f2f0e9 !important; }
+body[data-theme="dark"] .home-welfare-lead p,
+body[data-theme="dark"] .home-welfare-item small { color: #b5c0c9 !important; }
+body[data-theme="dark"] .home-welfare-item { border-left-color: rgba(234,216,173,.18) !important; }
+body[data-theme="dark"] .home-welfare-photo { background: #f8f5ee !important; color: #37414a !important; }
+
+/* Form and browser-controlled widgets respect the active theme. */
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea { background: #111f2d; color: #edf1f4; border-color: rgba(234,216,173,.28); }
+body[data-theme="dark"] ::selection { background: rgba(201,170,112,.35); color: #fff; }
+
 </style>
 </head>
 <body>
-<header class="header"><div class="wrap nav"><a class="brand" href="#home" aria-label="世界逸南首页"><img class="logo-for-dark" src="assets/46592ac4b295.webp" alt="世界逸南官方 Logo" decoding="async" fetchpriority="high"><img class="logo-for-light" src="assets/ee3e87bfbfea.webp" alt="世界逸南官方 Logo" decoding="async" fetchpriority="high"><span class="brand-copy"><span class="brand-cn">上海世界逸南科技有限公司</span><span class="brand-en">Shanghai World Yinan Technology Co., Ltd.</span></span></a><button class="menu" id="menu" aria-label="打开导航" aria-expanded="false">☰ 菜单</button><nav class="links" id="links"><a href="#about">关于我们</a><a href="#services">业务领域</a><a href="#values">品牌理念</a><a href="#social-responsibility">社会责任</a><a href="#contact">联系我们</a><a class="nav-cta" href="mailto:GF@shsjyn.cn?subject=商务合作咨询">商务合作 ↗</a><button class="theme-toggle" id="themeToggle" type="button" aria-label="切换浅色模式" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☼</span><span class="theme-label">浅色模式</span></button></nav></div></header>
+<header class="header"><div class="wrap nav"><a class="brand" href="#home" aria-label="世界逸南首页"><img class="logo-for-dark" src="assets/46592ac4b295.webp" alt="世界逸南官方 Logo" decoding="async" fetchpriority="high"><img class="logo-for-light" src="assets/ee3e87bfbfea.webp" alt="世界逸南官方 Logo" decoding="async" fetchpriority="high"><span class="brand-copy"><span class="brand-cn">上海世界逸南科技有限公司</span><span class="brand-en">Shanghai World Yinan Technology Co., Ltd.</span></span></a><button class="menu" id="menu" aria-label="打开导航" aria-expanded="false">☰ 菜单</button><nav class="links" id="links"><a href="#about">关于我们</a><a href="#services">业务领域</a><a href="#values">品牌理念</a><a href="#social-responsibility">社会责任</a><a href="#contact">联系我们</a><a class="nav-cta" href="mailto:GF@shsjyn.cn?subject=商务合作咨询">商务合作 ↗</a><div class="font-picker" id="fontPicker"><label class="font-label" for="fontSelector">字体</label><select id="fontSelector" class="font-select" aria-label="选择网站字体"><option value="misans-global">MiSans Global</option><option value="misans">MiSans</option><option value="lanzhang">兰掌</option></select><span class="font-help" id="fontHelp">MiSans 字体选项遵循对应许可；兰掌优先使用设备本机字体。</span></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="切换浅色模式" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☼</span><span class="theme-label">浅色模式</span></button></nav></div></header>
 <main>
 <section class="hero home-reference" id="home">
   <div class="home-hero-inner">
@@ -489,8 +657,42 @@ body[data-theme="dark"] .home-subline {
   </div>
 </section>
 </main>
-<footer class="footer"><div class="wrap"><div class="footer-main"><a class="footer-brand" href="#home"><img class="logo-for-dark" src="assets/46592ac4b295.webp" alt="世界逸南官方 Logo" decoding="async" loading="lazy"><img class="logo-for-light" src="assets/ee3e87bfbfea.webp" alt="世界逸南官方 Logo" decoding="async" loading="lazy"><span><strong>上海世界逸南科技有限公司</strong><small>SHANGHAI WORLD YINAN TECHNOLOGY CO., LTD.</small></span></a><div class="footer-links"><a href="#about">关于我们</a><a href="#services">业务领域</a><a href="#values">品牌理念</a><a href="#contact">商务合作</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> 上海世界逸南科技有限公司 · All Rights Reserved.</span><span>专业 · 创新 · 长期价值</span></div></div></footer>
+<footer class="footer"><div class="wrap"><div class="footer-main"><a class="footer-brand" href="#home"><img class="logo-for-dark" src="assets/46592ac4b295.webp" alt="世界逸南官方 Logo" decoding="async" loading="lazy"><img class="logo-for-light" src="assets/ee3e87bfbfea.webp" alt="世界逸南官方 Logo" decoding="async" loading="lazy"><span><strong>上海世界逸南科技有限公司</strong><small>SHANGHAI WORLD YINAN TECHNOLOGY CO., LTD.</small></span></a><div class="footer-links"><a href="#about">关于我们</a><a href="#services">业务领域</a><a href="#values">品牌理念</a><a href="#contact">商务合作</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> 上海世界逸南科技有限公司 · All Rights Reserved.</span><span>专业 · 创新 · 长期价值</span><span class="font-legal-note">字体说明：本网站提供 MiSans / MiSans Global 字体选项，字体知识产权归相应权利方所有。</span></div></div></footer>
 <a class="to-top" id="toTop" href="#home" aria-label="返回顶部">↑</a>
 <script>const menu=document.getElementById('menu'),links=document.getElementById('links');menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'✕ 关闭':'☰ 菜单'});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰ 菜单'}));document.getElementById('year').textContent=new Date().getFullYear();const topBtn=document.getElementById('toTop');window.addEventListener('scroll',()=>topBtn.classList.toggle('show',window.scrollY>420),{passive:true});const themeToggle=document.getElementById('themeToggle');function setTheme(theme){document.body.dataset.theme=theme;const light=theme==='light';themeToggle.setAttribute('aria-pressed',String(light));themeToggle.setAttribute('aria-label',light?'切换深色模式':'切换浅色模式');themeToggle.querySelector('.theme-icon').textContent=light?'☾':'☼';themeToggle.querySelector('.theme-label').textContent=light?'深色模式':'浅色模式';}themeToggle.addEventListener('click',()=>setTheme(document.body.dataset.theme==='light'?'dark':'light'));setTheme('light');
+const fontSelector=document.getElementById('fontSelector');
+const fontHelp=document.getElementById('fontHelp');
+const fontStylesheets={
+  'misans':'https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css',
+  'misans-global':'https://font.sec.miui.com/font/css?family=MiSans:400,450:Chinese_Simplify,Latin&display=swap'
+};
+const fontLoaded=new Set();
+function ensureFontStylesheet(key){
+  const href=fontStylesheets[key];
+  if(!href||fontLoaded.has(key))return;
+  const existing=document.querySelector('link[data-font-style="'+key+'"]');
+  if(existing){fontLoaded.add(key);return;}
+  const link=document.createElement('link');
+  link.rel='stylesheet';link.href=href;link.crossOrigin='anonymous';link.dataset.fontStyle=key;
+  link.onload=()=>{fontLoaded.add(key);if(fontSelector.value===key){fontHelp.textContent=key==='misans'?'已请求 MiSans 网页字体。':'已请求小米字体服务；实际字形取决于字体服务及网络可用性。';}};
+  link.onerror=()=>{fontHelp.textContent=key==='misans'?'字体服务暂时不可用，将使用设备后备字体。':'小米字体服务暂时不可用，将使用设备后备字体。';};
+  document.head.appendChild(link);
+}
+function applyFont(key,loadResource=true,save=true){
+  if(!['misans','misans-global','lanzhang'].includes(key))key='misans-global';
+  document.body.dataset.font=key;
+  fontSelector.value=key;
+  if(key==='lanzhang')fontHelp.textContent='兰掌优先调用设备已安装的同名字体；未安装时会使用楷体/衬线后备字体。若需所有设备显示完全一致，请提供兰掌字体文件。';
+  else if(key==='misans')fontHelp.textContent='MiSans 网页字体按需加载；若外部字体服务不可用，将使用系统后备字体。';
+  else fontHelp.textContent='MiSans Global 通过小米字体服务按需加载；若服务不可用，将使用系统后备字体。';
+  if(loadResource)ensureFontStylesheet(key);
+  if(save){try{localStorage.setItem('wy-font-family',key);}catch(e){}}
+}
+fontSelector.addEventListener('change',()=>applyFont(fontSelector.value,true,true));
+let initialFont='misans-global';try{initialFont=localStorage.getItem('wy-font-family')||initialFont;}catch(e){}
+applyFont(initialFont,false,false);
+// Load the initial choice after the first paint so custom font loading does not block the page's first render.
+const idleLoad=()=>ensureFontStylesheet(initialFont);
+if('requestIdleCallback' in window)requestIdleCallback(idleLoad,{timeout:2200});else window.setTimeout(idleLoad,1500);
 </script>
 </body></html>
